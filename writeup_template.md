@@ -2,7 +2,7 @@
 
 ##Project Writeup
 
-###Using LeNet classifier as a starting point and adding additional features to the convolutional layers yielded 92% accuracy on the test set.
+###Summary: Using LeNet classifier as a starting point and adding additional features to the convolutional layers yielded 92% accuracy on the test set.
 
 ---
 
@@ -36,7 +36,7 @@ The goals / steps of this project are the following:
 
 ####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
 
-You're reading it! and here is a link to my [project code](https://github.com/ergorham/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+This writeup serves to document the methodology and process for creating a deep neural network to identify various traffic signs based on the German Traffic Data set. The link to my [project code](https://github.com/ergorham/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
 ###Data Set Summary & Exploration
 
@@ -45,39 +45,35 @@ You're reading it! and here is a link to my [project code](https://github.com/er
 I used the pandas library to calculate summary statistics of the traffic
 signs data set:
 
-* The size of training set is ?
-* The size of the validation set is ?
-* The size of test set is ?
-* The shape of a traffic sign image is ?
-* The number of unique classes/labels in the data set is ?
+* The size of training set is 34799
+* The size of the validation set is 4410
+* The size of test set is 12630
+* The shape of a traffic sign image is (32, 32, 3)
+* The number of unique classes/labels in the data set is 43
 
 ####2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here is an exploratory visualization of the data set. It is a histogram of the classes labeled within the training set.
+
+![alt text][image3]
+
+Based on the fact there are 34799 images in the train set, there are some traffic signs that are over represented (Speed limit 30 & 50, Keep Left) with more than twice the mean in number of examples. This may lead to a preference, or a bias, within the trained system.
 
 ![alt text][image1]
+
+Another feature of the data set is the distribution of intensity of pixel values, as seen in the histogram above. Using the non-normalized values, the plot shows that images tend toward the low intensity and suggest low contrast images. This may be more reflective of real-world scenarios, however it may make classification more challenging. 
 
 ###Design and Test a Model Architecture
 
 ####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-As a first step, I decided to convert the images to grayscale because ...
+Based on the distribution above, I had attempted to use histogram normalization tools offered by different libraries, however I ran into challenges formatting the output from said tools to conform to the data format expected of the LeNet architecture.
 
-Here is an example of a traffic sign image before and after grayscaling.
+In order to achieve results, I used a simplistic normalization method (subtracting the mean pixel intensity value and dividing by that mean value to achieve unity distribution). This method allowed me to focus on the model rather than data formatting.
 
 ![alt text][image2]
 
-As a last step, I normalized the image data because ...
-
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
+The histogram above shows the distribution of normalized pixel value, now a float between -1 and 1, with mean 0. This is desirable for the optimizer when minimizing loss.
 
 
 ####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
