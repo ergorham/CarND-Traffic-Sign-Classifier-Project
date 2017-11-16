@@ -137,7 +137,7 @@ Here are five German traffic signs that I found on the web:
 
 4 out of the 5 images are triangular in shape, which may make them difficult to distinguish from one another. Also, because these images are taken from a website as opposed to photos of actual street signs, the colours are saturated. Initially, the classifier performed poorly (0.00 accuracy) with the signs on a white background. I opted to paste the signs onto one of the images from the test set, scaling the signs to 28x28 px, similar to the signs within the test set.
 
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set 
 
 Here are the results of the prediction:
 
@@ -152,7 +152,7 @@ Here are the results of the prediction:
 
 The model was able to correctly guess 1 of the 5 traffic signs, which gives an accuracy of 20%. This differs to the accuracy on the test set of 91.9%. It is possible that the scaling of my traffic signs is off, that they are larger than those within the test set and therefore the features would not match anything that have been trained.
 
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. 
 
 The code for making predictions on my final model is located in the last cell of the Ipython notebook.
 
